@@ -1,0 +1,2 @@
+devpi:
+  setting: value

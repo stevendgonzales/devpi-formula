@@ -1,0 +1,26 @@
+{# The map dictionary filters a list of settings based 
+on the os_family value from the grains dictionary #}
+
+{% set os_map = salt['grains.filter_by']({
+    'Debian': {},
+    'RedHat': {},
+    'Suse': {}
+}) %}
+
+{# Settings dictionary and populate it with 
+default values.  These should match the defaults 
+provided by the application. #}
+{% set devpi_settings = {
+    'setting': 'value'
+    } 
+%}
+
+
+{# Merge our os_map dictionary into our settings dictionary #}
+{% do devpi_settings.update(os_map) %}
+
+
+{# Update settings defaults from pillar data.  The only  
+pillar data that needs to be defined is values that we want 
+to override the defaults. #}
+{% do devpi_settings.update(salt['pillar.get']('devpi', {})) %}

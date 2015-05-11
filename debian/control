@@ -1,0 +1,11 @@
+Source: devpi-formula
+Section: saltstack
+Priority: extra
+Maintainer:  <>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+
+Package: devpi-formula
+Architecture: any
+Depends: salt-master
+Description: Salt-Formula for {devpi)[http://doc.devpi.net/latest/]
